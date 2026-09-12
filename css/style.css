@@ -639,39 +639,47 @@ button {
 /* ---------- Popup de donación reciente ---------- */
 .donation-popup {
   position: fixed;
-  top: 82px;
-  right: 16px;
-  width: 148px;
+  left: 16px;
+  bottom: calc(92px + env(safe-area-inset-bottom, 0px) + 14px);
+  /* El JS recalcula "bottom" en cada aparición para evitar solaparse
+     con el botón "Donar" (el de arriba o la barra fija de abajo, el
+     que esté visible en ese momento). Este valor es solo el fallback. */
+  width: max-content;
+  max-width: calc(100% - 32px);
   display: flex;
   align-items: center;
   gap: 8px;
   background: #fff;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
-  border-radius: var(--radius-md);
-  padding: 8px 10px 8px 8px;
+  border-radius: var(--radius-full);
+  padding: 8px 16px 8px 8px;
   opacity: 0;
-  transform: translateY(-12px) scale(0.98);
+  transform: translateY(12px) scale(0.98);
   transition: opacity .3s ease, transform .3s ease;
   pointer-events: none;
   z-index: 90;
+  overflow: hidden;
 }
 .donation-popup.show {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
-.donation-popup .avatar-sm { flex-shrink: 0; width: 22px; height: 22px; font-size: 10.5px; }
+.donation-popup .avatar-sm { flex-shrink: 0; }
 .donation-popup-text {
-  font-size: 11px;
-  line-height: 1.35;
+  font-size: 12.5px;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .donation-popup-text .name {
-  display: block;
   font-weight: 700;
   color: var(--text);
 }
 .donation-popup-text .detail {
   color: var(--text-muted);
+  margin-left: 4px;
 }
 
 /* ---------- Utilidades ---------- */
