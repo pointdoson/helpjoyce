@@ -636,6 +636,44 @@ button {
   transform: translate(-50%, 0);
 }
 
+/* ---------- Popup de donación reciente ---------- */
+.donation-popup {
+  position: fixed;
+  left: 14px;
+  bottom: 104px;
+  max-width: min(280px, calc(100% - 28px));
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius-md);
+  padding: 10px 14px 10px 10px;
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  transition: opacity .3s ease, transform .3s ease;
+  pointer-events: none;
+  z-index: 90;
+}
+.donation-popup.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.donation-popup .avatar-sm { flex-shrink: 0; }
+.donation-popup-text {
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+.donation-popup-text .name {
+  display: block;
+  font-weight: 700;
+  color: var(--text);
+}
+.donation-popup-text .detail {
+  color: var(--text-muted);
+}
+
 /* ---------- Utilidades ---------- */
 .center-max {
   max-width: var(--max-width);
