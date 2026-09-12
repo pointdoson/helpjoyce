@@ -628,6 +628,7 @@ button {
   left: 16px;
   width: max-content;
   max-width: calc(100% - 32px);
+  height: 40px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -635,7 +636,7 @@ button {
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   border-radius: var(--radius-full);
-  padding: 6px 16px 6px 6px;
+  padding: 0 16px 0 6px;
   opacity: 0;
   transform: translateY(-8px) scale(0.98);
   transition: opacity .3s ease, transform .3s ease;
@@ -649,19 +650,27 @@ button {
 }
 .donation-popup .avatar-sm { flex-shrink: 0; }
 .donation-popup-text {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  min-width: 0;
   font-size: 12.5px;
   line-height: 1.3;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .donation-popup-text .name {
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-weight: 700;
   color: var(--text);
 }
 .donation-popup-text .detail {
+  flex-shrink: 0;
+  white-space: nowrap;
   color: var(--text-muted);
-  margin-left: 4px;
 }
 
 /* ---------- Utilidades ---------- */
