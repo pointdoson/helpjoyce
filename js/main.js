@@ -329,11 +329,11 @@ function initDonarPage() {
 // los datos reales de tu planilla de donantes.
 // ============================================================
 const RECENT_DONATIONS_EXAMPLE = [
-  { name: "Example Donor", amount: 10, timeText: "just now" },
-  { name: "Example Donor", amount: 25, timeText: "2 minutes ago" },
-  { name: "Example Donor", amount: 5, timeText: "5 minutes ago" },
-  { name: "Example Donor", amount: 50, timeText: "12 minutes ago" },
-  { name: "Example Donor", amount: 10, timeText: "20 minutes ago" }
+  { name: "Lily", amount: 49.90, timeText: "just now" },
+  { name: "Ava", amount: 14.90, timeText: "2 minutes ago" },
+  { name: "Florence", amount: 3.90, timeText: "5 minutes ago" },
+  { name: "Mia", amount: 3.90, timeText: "12 minutes ago" },
+  { name: "Willow", amount: 49.90, timeText: "20 minutes ago" }
 ];
 
 function initDonationPopups() {
