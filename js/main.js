@@ -323,6 +323,46 @@ function initDonarPage() {
 }
 
 // ============================================================
+// Popup de donación reciente (index.html) — notificación tipo
+// "prueba social" que aparece y desaparece en bucle.
+// EDITAR: sustituye estos nombres/importes/tiempos de ejemplo por
+// los datos reales de tu planilla de donantes.
+// ============================================================
+const RECENT_DONATIONS_EXAMPLE = [
+  { name: "Example Donor", amount: 10, timeText: "just now" },
+  { name: "Example Donor", amount: 25, timeText: "2 minutes ago" },
+  { name: "Example Donor", amount: 5, timeText: "5 minutes ago" },
+  { name: "Example Donor", amount: 50, timeText: "12 minutes ago" },
+  { name: "Example Donor", amount: 10, timeText: "20 minutes ago" }
+];
+
+function initDonationPopups() {
+  const popup = document.getElementById("donationPopup");
+  if (!popup) return; // no estamos en index.html
+
+  const avatarEl = document.getElementById("donationPopupAvatar");
+  const nameEl = document.getElementById("donationPopupName");
+  const detailEl = document.getElementById("donationPopupDetail");
+
+  let index = 0;
+
+  function showNext() {
+    const entry = RECENT_DONATIONS_EXAMPLE[index % RECENT_DONATIONS_EXAMPLE.length];
+    index++;
+
+    if (avatarEl) avatarEl.textContent = entry.name.charAt(0);
+    if (nameEl) nameEl.textContent = entry.name;
+    if (detailEl) detailEl.textContent = "donated " + formatCurrency(entry.amount) + " · " + entry.timeText;
+
+    popup.classList.add("show");
+    setTimeout(() => popup.classList.remove("show"), 5000);
+  }
+
+  setTimeout(showNext, 4000);
+  setInterval(showNext, 12000);
+}
+
+// ============================================================
 // Init
 // ============================================================
 document.addEventListener("DOMContentLoaded", () => {
@@ -334,4 +374,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initStickyBar();
   initShareButtons();
   initDonarPage();
+  initDonationPopups();
 });
