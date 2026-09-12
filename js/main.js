@@ -350,7 +350,7 @@ function initDonationPopups() {
     const entry = RECENT_DONATIONS_EXAMPLE[index % RECENT_DONATIONS_EXAMPLE.length];
     index++;
 
-    if (avatarEl) avatarEl.textContent = entry.name.charAt(0);
+    if (avatarEl) avatarEl.textContent = entry.name.trim().charAt(0).toUpperCase();
     if (nameEl) nameEl.textContent = entry.name;
     if (detailEl) detailEl.textContent = "donated " + formatCurrency(entry.amount) + " · " + entry.timeText;
 
