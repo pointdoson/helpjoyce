@@ -330,10 +330,10 @@ function initDonarPage() {
 // ============================================================
 const RECENT_DONATIONS_EXAMPLE = [
   { name: "Lily", amount: 49.90, timeText: "just now" },
-  { name: "Ava", amount: 14.90, timeText: "2 minutes ago" },
-  { name: "Florence", amount: 3.90, timeText: "5 minutes ago" },
-  { name: "Mia", amount: 3.90, timeText: "12 minutes ago" },
-  { name: "Willow", amount: 49.90, timeText: "20 minutes ago" }
+  { name: "Ava", amount: 14.90, timeText: "just now" },
+  { name: "Florence", amount: 3.90, timeText: "just now" },
+  { name: "Mia", amount: 3.90, timeText: "just now" },
+  { name: "Willow", amount: 49.90, timeText: "just now" }
 ];
 
 function initDonationPopups() {
