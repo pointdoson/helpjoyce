@@ -346,6 +346,33 @@ function initDonationPopups() {
 
   let index = 0;
 
+  // Evita que el popup se solape con el botón "Donate": si la barra fija
+  // de abajo ya está visible, se coloca justo arriba de ella. Si todavía
+  // no aparece (el héroe sigue en pantalla), se coloca dentro de la foto,
+  // cerca de su borde inferior — ahí no hay ningún texto ni botón debajo.
+  function repositionAbovePrimaryButton() {
+    const stickyBar = document.getElementById("stickyBar");
+    const hero = document.getElementById("hero");
+
+    if (stickyBar && stickyBar.classList.contains("visible")) {
+      // offsetHeight (no getBoundingClientRect) porque la barra se anima con
+      // "transform: translateY", y leer su posición en pleno movimiento daría
+      // un valor incorrecto a mitad de camino.
+      popup.style.bottom = (stickyBar.offsetHeight + 14) + "px";
+      return;
+    }
+
+    if (hero) {
+      const rect = hero.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        popup.style.bottom = Math.max(24, window.innerHeight - rect.bottom + 24) + "px";
+        return;
+      }
+    }
+
+    popup.style.bottom = "24px";
+  }
+
   function showNext() {
     const entry = RECENT_DONATIONS_EXAMPLE[index % RECENT_DONATIONS_EXAMPLE.length];
     index++;
@@ -354,6 +381,7 @@ function initDonationPopups() {
     if (nameEl) nameEl.textContent = entry.name;
     if (detailEl) detailEl.textContent = "donated " + formatCurrency(entry.amount) + " · " + entry.timeText;
 
+    repositionAbovePrimaryButton();
     popup.classList.add("show");
     setTimeout(() => popup.classList.remove("show"), 5000);
   }
