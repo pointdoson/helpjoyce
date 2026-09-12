@@ -640,8 +640,10 @@ button {
 .donation-popup {
   position: fixed;
   left: 14px;
-  bottom: 104px;
-  max-width: min(280px, calc(100% - 28px));
+  right: 14px;
+  bottom: calc(92px + env(safe-area-inset-bottom, 0px) + 14px);
+  max-width: min(300px, calc(100% - 28px));
+  margin: 0 auto;
   display: flex;
   align-items: center;
   gap: 10px;
