@@ -317,19 +317,7 @@ function initDonarPage() {
   if (continueBtn) {
     continueBtn.addEventListener("click", () => {
       if (!selectedAmount || !selectedLink) return;
-
-      if (typeof fbq === "function") {
-        fbq("track", "InitiateCheckout", {
-          value: selectedAmount,
-          currency: ACTIVE_CURRENCY.isoCode,
-          content_name: "Donation for Thor"
-        });
-      }
-
-      // Pequeño margen para que el Pixel alcance a enviar el evento antes de salir de la página.
-      setTimeout(() => {
-        window.location.href = selectedLink;
-      }, 250);
+      window.location.href = selectedLink;
     });
   }
 }
